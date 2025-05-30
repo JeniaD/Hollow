@@ -8,48 +8,8 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-int VERSION = 0;
-
-unsigned short PORT = 8080;
-char* homeDir = "/var/www/html";
-
-int init(int argc, char* argv[])
-{
-    if(!argc) return -1; // No arguments found
-
-    // Go through every argument
-    for(int i = 0; i < argc; i++)
-    {
-        // Single arguments
-        if(strcmp(argv[i], "--help") == 0)
-        {
-            printf("Web server v%d\n\n", VERSION);
-            printf("Arguments:\n");
-            printf(" --port PORT\n");
-            printf("\tSpecify the port number. Some may require root access.\n");
-            printf(" --help\n");
-            printf("\tShow help message.\n");
-            return 0;
-        }
-
-        // Arguments with value specification
-        if(strcmp(argv[i], "--port") == 0 && i+1 < argc)
-        {
-            PORT = atoi(argv[++i]);
-        }
-    }
-    // Final checks
-    // if(PORT < 65)
-
-    return 1;
-}
-
-/*
-- global variables/Server struct
-- parameters from CLI or file processing
-- request building functions
-- request parsing functions
-*/
+#include "config.h"
+#include "response.h"
 
 int main(int argc, char* argv[])
 {
