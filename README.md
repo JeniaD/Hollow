@@ -13,6 +13,12 @@ Then initialize CMake with:
 mkdir build
 cd build
 cmake ..
+make
+```
+
+Finally run the executable
+```
+./webserver
 ```
 
 Fianally run the executable
